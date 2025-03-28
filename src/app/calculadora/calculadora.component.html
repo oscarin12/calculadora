@@ -1,0 +1,36 @@
+<ng-template #errorModal let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title">uf un error </h5>
+      <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+      <p>{{ mensajeError }}</p> <!-- Mensaje de error dinámico -->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cerrar</button>
+    </div>
+</ng-template>
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card p-3 shadow-lg" style="width: 300px;">
+      <h3 class="text-center">Calculadora</h3>
+      
+      <!-- Pantalla de la calculadora -->
+      <input type="text" class="form-control text-end mb-2" [(ngModel)]="display" disabled />
+      
+      <!-- Fila de botones -->
+      <div class="row g-1">
+        <div class="col-3" *ngFor="let btn of botones">
+          <button class="btn btn-dark w-100" (click)="onPress(btn)">
+            {{ btn }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Botón de igual con color personalizado (fuera del bucle) -->
+      <button class="btn btn-success w-100 mt-2" (click)="onPress('=')">=</button>
+      
+      <!-- Botón de limpiar -->
+      <button class="btn btn-danger w-100 mt-2" (click)="limpiar()">borrar todo</button>
+    </div>
+</div>
